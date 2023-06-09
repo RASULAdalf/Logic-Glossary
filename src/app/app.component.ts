@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,15 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'Logic-Glossary';
+
+
+  inputForm = new FormGroup({
+    inputText:new FormControl('')
+  });
+  outputForm = new FormGroup({
+    outputText:new FormControl('')
+  });
+
 
 
   constructor(private activatedRoute: ActivatedRoute) {
