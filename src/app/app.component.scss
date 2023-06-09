@@ -1,0 +1,67 @@
+.row{
+  height: 99%;
+  width: auto;
+  border: 1px solid red;
+  overflow: hidden;
+}
+.title-area{
+  width: 100%;
+  height: 50px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: 40px;
+  font-size: x-large;
+  font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif ;
+}
+.L{
+  color: dodgerblue;
+}
+.O{
+  color: red;
+}
+.G{
+  color: #9b9b14;
+}
+.I{
+  color: green;
+}
+.C{
+  color: red;
+}
+.Glossary{
+  color: #5e6268;
+}
+.content-area{
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+
+}
+.language-buttons{
+  width: 100%;
+  height: 100px;
+  border: 1px solid green;
+}
+.content-boxes{
+  flex: 1;
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-text{
+  height: 300px;
+  flex: 1;
+  border: 1px solid grey;
+
+}
+.output-text{
+  height: 300px;
+  flex: 1;
+  border: 1px solid grey;
+}
