@@ -1,23 +1,34 @@
 <div class="container">
 <div class="row">
   <div class="title-area">
+    <div class="title-text-area">
     <span class="L">L</span>
     <span class="O">o</span>
     <span class="G">g</span>
     <span class="I">i</span>
     <span class="C">c</span> &nbsp;
     <span class="Glossary">Glossary</span>
-  </div><hr>
+    </div>
+  <div class="title-icon-area">
+    <button class="title-icon-outer" mat-icon-button>
+      <mat-icon class="w3-xlarge">history</mat-icon>
+    </button>
+  </div>
+  </div>
+  <hr>
     <div class="content-area">
       <div class="language-buttons">
         <div class="input-lang-btn">
           <mat-tab-group>
-            <mat-tab label="Sinhala"></mat-tab>
+            <mat-tab label="Sinhala" #inputLang></mat-tab>
           </mat-tab-group>
         </div>
+        <button class="swap-lang-btn" (click)="swapLanguages(inputLang,outputLang)">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
         <div class="output-lang-btn">
           <mat-tab-group>
-            <mat-tab label="English"></mat-tab>
+            <mat-tab label="English" #outputLang></mat-tab>
           </mat-tab-group>
         </div>
       </div>
@@ -38,7 +49,7 @@
           </div>
           </form>
           <div class="voice-input-button">
-            <button mat-icon-button class="mic-btn">
+            <button mat-icon-button class="mic-btn" (click)="recordAudioAndSend()">
               <mat-icon>mic</mat-icon>
             </button>
           </div>
@@ -62,7 +73,11 @@
 
       </div>
     </div>
-    <div class="other-contents-area"></div>
+    <div class="other-contents-area">
+      <button class="share-btn" mat-icon-button>
+        <mat-icon class="share-btn-icon">share</mat-icon> <span class="share-btn-text">&nbsp;Share Translation</span>
+      </button>
+    </div>
   </div>
 
 </div>

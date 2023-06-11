@@ -2,6 +2,7 @@
   height: 99%;
   width: auto;
   overflow: hidden;
+
 }
 .title-area{
   width: auto;
@@ -9,10 +10,36 @@
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   margin-left: 40px;
   font-size: x-large;
   font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif ;
+
+}
+.title-text-area{
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.title-icon-area{
+  height: 100%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.title-icon-outer{
+  height: 95%;
+  width: 50px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .L{
   color: dodgerblue;
@@ -31,6 +58,10 @@
 }
 .Glossary{
   color: #5e6268;
+}
+hr{
+  border-top: 1px solid #958888 !important;
+  margin: 5px 0 !important;
 }
 .content-area{
   width: auto;
@@ -135,4 +166,25 @@
   margin-right: 30px;
   display: flex;
   flex-direction: column;
+}
+.other-contents-area{
+  width: auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.share-btn{
+  width: 400px;
+  height: 60%;
+  border-radius: 32px;
+  border: 1px solid black;
+  color: blue;
+}
+.share-btn-text{
+  font-size: x-large;
+  padding-bottom: 300px;
+}
+.share-btn-icon{
+  margin-top: 7px;
 }
