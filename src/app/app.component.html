@@ -12,12 +12,15 @@
       <div class="language-buttons">
         <div class="input-lang-btn">
           <mat-tab-group>
-            <mat-tab label="Sinhala"></mat-tab>
+            <mat-tab label="Sinhala" #inputLang></mat-tab>
           </mat-tab-group>
         </div>
+        <button mat-icon-button (click)="swapLanguages(inputLang,outputLang)">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
         <div class="output-lang-btn">
           <mat-tab-group>
-            <mat-tab label="English"></mat-tab>
+            <mat-tab label="English" #outputLang></mat-tab>
           </mat-tab-group>
         </div>
       </div>
