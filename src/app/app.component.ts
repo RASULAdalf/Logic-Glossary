@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(resp=>{
       if (resp['word']!= undefined && resp['fromLang']!=undefined && resp['toLang']!=undefined) {
-        console.log(resp['word']);
+        //console.log(resp['word']);
       }
     })
   }
