@@ -64,7 +64,7 @@
           <div class="text-area" [style.margin-bottom.px]="30">
             <div class="text-inner">
               <mat-form-field class="example-full-width" appearance="fill" [style.height.%]="100" [style.width.%]="100">
-                <input matInput placeholder="Corresponding Word" formControlName="outputText" readonly>
+                <input matInput placeholder="Corresponding Word" formControlName="outputText" [value]="appService.translatedText" readonly>
               </mat-form-field>
           </div>
       </div>
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="other-contents-area">
-      <button class="share-btn" mat-icon-button>
+      <button class="share-btn" mat-icon-button (click)="createTinyUrlAndCopy()">
         <mat-icon class="share-btn-icon">share</mat-icon> <span class="share-btn-text">&nbsp;Share Translation</span>
       </button>
     </div>

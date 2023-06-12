@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {debounceTime} from "rxjs";
-import {AppService} from "./app.service";
+import {AppService} from "./services/app.service";
 
 
 @Component({
@@ -18,9 +18,6 @@ export class AppComponent implements OnInit {
   inputForm = new FormGroup({
     inputText:new FormControl('')
   });
-  outputForm = new FormGroup({
-    outputText:new FormControl('')
-  });
 
   //Listeners
 
@@ -31,10 +28,17 @@ export class AppComponent implements OnInit {
     })
   }
 
+  outputForm = new FormGroup({
+    outputText:new FormControl('')
+  });
+
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(resp=>{
       if (resp['word']!= undefined && resp['fromLang']!=undefined && resp['toLang']!=undefined) {
-        console.log(resp['word']);
+        this.appService.getTranslation(resp['word'],resp['fromLang'],resp['toLang']).subscribe(data=>{
+          this.appService.translatedText = data?.data;
+          console.log(this.appService.translatedText);
+        })
       }
     })
   }
@@ -73,5 +77,11 @@ export class AppComponent implements OnInit {
           mediaRecorder.stop();
         }, 3000);
       });
+  }
+
+  createTinyUrlAndCopy() {
+    console.log(this.activatedRoute.url);
+    W9OFYAa5IseXCK5KIiNW1PdAZ09VZ5ofrD3I2GgjFO1yhb5vOjCLydBRZ5c0
+
   }
 }
