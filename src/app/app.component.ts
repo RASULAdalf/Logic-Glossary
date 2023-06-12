@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {debounceTime} from "rxjs";
-import {AppService} from "./app.service";
+import {AppService} from "./services/app.service";
 
 
 @Component({
