@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {debounceTime} from "rxjs";
 import {AppService} from "./services/app.service";
+import {ClipboardService} from "ngx-clipboard";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -16,26 +18,34 @@ export class AppComponent implements OnInit {
   toLang = 'English';
 
   inputForm = new FormGroup({
-    inputText:new FormControl('')
+    inputText: new FormControl('')
+  });
+  outputForm = new FormGroup({
+    outputText: new FormControl('')
   });
 
-  //Listeners
-
-
-  constructor(private activatedRoute: ActivatedRoute,private router:Router,public appService:AppService) {
-    this.inputForm.valueChanges.pipe(debounceTime(1080)).subscribe(inData=>{
-      this.router.navigate(['/'],{queryParams:{'word':inData.inputText,'fromLang':this.fromLang,'toLang':this.toLang}})
+  constructor(private snackBar: MatSnackBar, private activatedRoute: ActivatedRoute, private router: Router, public appService: AppService, private clipBoard: ClipboardService) {
+    this.inputForm.valueChanges.pipe(debounceTime(1080)).subscribe(inData => {
+      if (inData.inputText !== '') {
+        this.router.navigate(['/'], {
+          queryParams: {
+            'word': inData.inputText,
+            'fromLang': this.fromLang,
+            'toLang': this.toLang
+          }
+        })
+      }
     })
   }
 
-  outputForm = new FormGroup({
-    outputText:new FormControl('')
-  });
-
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(resp=>{
-      if (resp['word']!= undefined && resp['fromLang']!=undefined && resp['toLang']!=undefined) {
-        this.appService.getTranslation(resp['word'],resp['fromLang'],resp['toLang']).subscribe(data=>{
+    this.activatedRoute.queryParams.subscribe(resp => {
+      if (resp['word'] != undefined && resp['fromLang'] != undefined && resp['toLang'] != undefined) {
+        if (resp['fromLang'] !== 'Sinhala' && this.fromLang === 'Sinhala') {
+          this.swapLanguages();
+        }
+        this.inputForm.get('inputText')?.patchValue(resp['word']);
+        this.appService.getTranslation(resp['word'], resp['fromLang'], resp['toLang']).subscribe(data => {
           this.appService.translatedText = data?.data;
           console.log(this.appService.translatedText);
         })
@@ -44,17 +54,17 @@ export class AppComponent implements OnInit {
   }
 
 
-  swapLanguages(inputLang: any, outputLang: any) {
-    let prevInputLang = inputLang.textLabel;
-    inputLang.textLabel = outputLang.textLabel;
-    outputLang.textLabel = prevInputLang;
-
-    this.fromLang = inputLang.textLabel;
-    this.toLang = outputLang.textLabel;
+  swapLanguages() {
+    let prevInputLang = this.fromLang;
+    this.fromLang = this.toLang;
+    this.toLang = prevInputLang;
+    let input: any = this.inputForm.get('inputText')?.value
+    this.inputForm.get('inputText')?.patchValue(this.appService.translatedText);
+    this.outputForm.get('outputText')?.patchValue(input);
   }
 
   recordAudioAndSend() {
-    navigator.mediaDevices.getUserMedia({ audio: true })
+    navigator.mediaDevices.getUserMedia({audio: true})
       .then(stream => {
         const mediaRecorder = new MediaRecorder(stream);
         mediaRecorder.start();
@@ -80,8 +90,24 @@ export class AppComponent implements OnInit {
   }
 
   createTinyUrlAndCopy() {
-    console.log(this.activatedRoute.url);
-    W9OFYAa5IseXCK5KIiNW1PdAZ09VZ5ofrD3I2GgjFO1yhb5vOjCLydBRZ5c0
+    this.appService.getTinyUrl("http://localhost:4200" + this.router.url).subscribe(data => {
+      this.clipBoard.copy(data?.data?.tiny_url);
+      this.snackBar.open("Link copied to clipboard!", "OK", {
+        duration: 2000,
+      });
 
+    })
+
+  }
+
+  openHistoryModal() {
+    this.appService.getHistoryData(0, 10).subscribe(data => {
+      this.appService.openHistoryModal(data);
+    })
+  }
+
+  resetForms() {
+    this.inputForm.get('inputText')?.patchValue('');
+    this.outputForm.get('outputText')?.patchValue('');
   }
 }

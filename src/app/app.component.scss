@@ -1,10 +1,11 @@
-.row{
+.row {
   height: 99%;
   width: auto;
   overflow: hidden;
 
 }
-.title-area{
+
+.title-area {
   width: auto;
   height: 50px;
   top: 0;
@@ -13,17 +14,19 @@
   justify-content: space-between;
   margin-left: 40px;
   font-size: x-large;
-  font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif ;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 
 }
-.title-text-area{
+
+.title-text-area {
   height: 100%;
   width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-.title-icon-area{
+
+.title-icon-area {
   height: 100%;
   width: 20%;
   display: flex;
@@ -31,7 +34,8 @@
   justify-content: center;
 
 }
-.title-icon-outer{
+
+.title-icon-outer {
   height: 95%;
   width: 50px;
   border: 1px solid grey;
@@ -41,55 +45,66 @@
   align-items: center;
   justify-content: center;
 }
-.L{
+
+.L {
   color: dodgerblue;
 }
-.O{
+
+.O {
   color: red;
 }
-.G{
+
+.G {
   color: #9b9b14;
 }
-.I{
+
+.I {
   color: green;
 }
-.C{
+
+.C {
   color: red;
 }
-.Glossary{
+
+.Glossary {
   color: #5e6268;
 }
-hr{
+
+hr {
   border-top: 1px solid #958888 !important;
   margin: 5px 0 !important;
 }
-.content-area{
+
+.content-area {
   width: auto;
   height: 500px;
   display: flex;
   flex-direction: column;
 
 }
-.language-buttons{
+
+.language-buttons {
   width: auto;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.input-lang-btn{
+
+.input-lang-btn {
   height: 40px;
   width: 120px;
 
 }
-.output-lang-btn{
+
+.output-lang-btn {
   height: 40px;
   width: 120px;
 
 }
 
-@media screen and (min-width: 0) and (max-width: 750px){
-  .content-boxes{
+@media screen and (min-width: 0) and (max-width: 750px) {
+  .content-boxes {
     flex: 1;
     width: auto;
     display: flex;
@@ -97,14 +112,14 @@ hr{
     justify-content: space-between;
     align-items: center;
   }
-  .input-text{
+  .input-text {
     flex: 1;
     width: 95%;
     border: 1px solid grey;
     margin-bottom: 25px;
 
   }
-  .output-text{
+  .output-text {
     flex: 1;
     width: 95%;
     border: 1px solid grey;
@@ -112,13 +127,15 @@ hr{
     margin-left: 20px;
   }
 }
-.content-boxes{
+
+.content-boxes {
   flex: 1;
   width: auto;
   display: flex;
   justify-content: space-between;
 }
-.input-text{
+
+.input-text {
   height: 300px;
   flex: 1;
   border: 1px solid grey;
@@ -128,38 +145,45 @@ hr{
   flex-direction: column;
 
 }
-.close-btn{
+
+.close-btn {
   flex: 1;
   width: auto;
   position: relative;
 }
-.reset-btn{
+
+.reset-btn {
   position: absolute;
   right: 5px;
 }
-.text-area{
+
+.text-area {
   height: 80%;
   width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.text-inner{
+
+.text-inner {
   height: 85%;
   width: 90%;
 
 }
-.voice-input-button{
+
+.voice-input-button {
   flex: 1;
   width: auto;
   position: relative;
 }
-.mic-btn{
+
+.mic-btn {
   position: absolute;
   bottom: 0;
   left: 5px;
 }
-.output-text{
+
+.output-text {
   height: 300px;
   flex: 1;
   border: 1px solid grey;
@@ -167,24 +191,28 @@ hr{
   display: flex;
   flex-direction: column;
 }
-.other-contents-area{
+
+.other-contents-area {
   width: auto;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.share-btn{
+
+.share-btn {
   width: 400px;
   height: 60%;
   border-radius: 32px;
   border: 1px solid black;
   color: blue;
 }
-.share-btn-text{
+
+.share-btn-text {
   font-size: x-large;
   padding-bottom: 300px;
 }
-.share-btn-icon{
+
+.share-btn-icon {
   margin-top: 7px;
 }

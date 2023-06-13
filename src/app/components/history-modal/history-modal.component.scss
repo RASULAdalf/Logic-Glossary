@@ -1,0 +1,97 @@
+.row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dialog-close {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+
+h2 {
+  padding-top: 10px;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.content-area {
+  height: 500px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-box {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 7px;
+  border-bottom: 0.7px solid grey;
+}
+
+.content-box:hover {
+  cursor: pointer;
+}
+
+.content-box-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+
+.input-word {
+  height: 100%;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.output-word {
+  height: 100%;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.icon-area {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.content-date-time-area {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
