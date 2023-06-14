@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="title-area" mat-dialog-title>
+    <h2>History</h2>
+    <button class="dialog-close" mat-dialog-close mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content-area" mat-dialog-content>
+    <button #HistoryDataDisplayBox (click)="displayHistoryData(HistoryDataDisplayBox)" *ngFor="let fetchedData of data.data; index as num"
+            [attr.data-index]="num" class="content-box">
+      <div class="content-box-area">
+        <span class="input-word">{{fetchedData?.englishWord}}</span>
+        <span class="icon-area">
+        <mat-icon>arrow_forward</mat-icon>
+      </span>
+        <span class="output-word">{{fetchedData?.sinhalaWord}}</span></div>
+      <span class="content-date-time-area">
+        <small>{{dateTime[num]}}</small>
+      </span>
+    </button>
+  </div>
+  <footer class="footer-area" mat-dialog-actions>
+    <mat-paginator (page)="pageEvent=loadHistoryData($event)" [length]=dataCount [pageIndex]=page [pageSizeOptions]=pageSizeOptions
+                   [pageSize]=pageSize aria-label="Select Page"></mat-paginator>
+  </footer>
+</div>
