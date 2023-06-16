@@ -1,64 +1,126 @@
-.row{
+.row {
   height: 99%;
   width: auto;
   overflow: hidden;
+
 }
-.title-area{
+
+.title-area {
   width: auto;
   height: 50px;
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   margin-left: 40px;
   font-size: x-large;
-  font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif ;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+
 }
-.L{
+
+.title-text-area {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.title-icon-area {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.title-icon-outer {
+  height: 95%;
+  width: 50px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.L {
   color: dodgerblue;
 }
-.O{
+
+.O {
   color: red;
 }
-.G{
+
+.G {
   color: #9b9b14;
 }
-.I{
+
+.I {
   color: green;
 }
-.C{
+
+.C {
   color: red;
 }
-.Glossary{
+
+.Glossary {
   color: #5e6268;
 }
-.content-area{
+
+hr {
+  border-top: 1px solid #958888 !important;
+  margin: 5px 0 !important;
+}
+
+.content-area {
   width: auto;
   height: 500px;
   display: flex;
   flex-direction: column;
 
 }
-.language-buttons{
+
+.language-buttons {
   width: auto;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.input-lang-btn{
+
+.input-lang-btn {
   height: 40px;
   width: 120px;
 
 }
-.output-lang-btn{
+
+.output-lang-btn {
   height: 40px;
   width: 120px;
 
 }
 
-@media screen and (min-width: 0) and (max-width: 750px){
+@media screen and (min-width: 0) and (max-width: 750px) {
+  .share-btn{
+    width: 300px!important;
+    font-size: large!important;
+    padding-bottom: 50px!important;
+  }
   .content-boxes{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .mic-button{
+    bottom: -8px!important;
+  }
+  .language-buttons{
+    height: 80px !important;
+  }
+  .content-boxes {
     flex: 1;
     width: auto;
     display: flex;
@@ -66,14 +128,16 @@
     justify-content: space-between;
     align-items: center;
   }
-  .input-text{
-    flex: 1;
+  .input-text {
+    all: unset;
+    height: 200px!important;
     width: 95%;
     border: 1px solid grey;
-    margin-bottom: 25px;
-
+    margin: 20px 40px 12px 30px;
+    display: flex;
+    flex-direction: column;
   }
-  .output-text{
+  .output-text {
     flex: 1;
     width: 95%;
     border: 1px solid grey;
@@ -81,13 +145,15 @@
     margin-left: 20px;
   }
 }
-.content-boxes{
+
+.content-boxes {
   flex: 1;
   width: auto;
   display: flex;
   justify-content: space-between;
 }
-.input-text{
+
+.input-text {
   height: 300px;
   flex: 1;
   border: 1px solid grey;
@@ -97,42 +163,83 @@
   flex-direction: column;
 
 }
-.close-btn{
+
+.close-btn {
   flex: 1;
   width: auto;
   position: relative;
 }
-.reset-btn{
+
+.reset-btn {
   position: absolute;
   right: 5px;
 }
-.text-area{
+
+.text-area {
   height: 80%;
   width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.text-inner{
+
+.text-inner {
   height: 85%;
   width: 90%;
 
 }
-.voice-input-button{
+
+.voice-input-button {
   flex: 1;
   width: auto;
   position: relative;
+  border: none;
 }
-.mic-btn{
+
+.mic-btn {
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 5px;
+  border: none!important;
 }
-.output-text{
+.colour-mic-btn{
+  position: absolute;
+  bottom: 4px;
+  left: 5px;
+  color: blue;
+  border: none!important;
+}
+
+.output-text {
   height: 300px;
   flex: 1;
   border: 1px solid grey;
   margin-right: 30px;
   display: flex;
   flex-direction: column;
+}
+
+.other-contents-area {
+  width: auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-btn {
+  width: 400px;
+  height: 60%;
+  border-radius: 32px;
+  border: 1px solid black;
+  color: blue;
+}
+
+.share-btn-text {
+  font-size: x-large;
+  padding-bottom: 300px;
+}
+
+.share-btn-icon {
+  margin-top: 7px;
 }

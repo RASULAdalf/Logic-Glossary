@@ -1,68 +1,88 @@
 <div class="container">
-<div class="row">
-  <div class="title-area">
-    <span class="L">L</span>
-    <span class="O">o</span>
-    <span class="G">g</span>
-    <span class="I">i</span>
-    <span class="C">c</span> &nbsp;
-    <span class="Glossary">Glossary</span>
-  </div><hr>
+  <div class="row">
+    <div class="title-area">
+      <div class="title-text-area">
+        <span class="L">L</span>
+        <span class="O">o</span>
+        <span class="G">g</span>
+        <span class="I">i</span>
+        <span class="C">c</span> &nbsp;
+        <span class="Glossary">& Scientific Methods Glossary</span>
+      </div>
+      <div class="title-icon-area">
+        <button (click)="openHistoryModal()" class="title-icon-outer" mat-icon-button>
+          <mat-icon class="w3-xlarge">history</mat-icon>
+        </button>
+      </div>
+    </div>
+    <hr>
     <div class="content-area">
       <div class="language-buttons">
         <div class="input-lang-btn">
           <mat-tab-group>
-            <mat-tab label="Sinhala"></mat-tab>
+            <mat-tab [label]="fromLang"></mat-tab>
           </mat-tab-group>
         </div>
+        <button (click)="swapLanguages()" class="swap-lang-btn">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
         <div class="output-lang-btn">
           <mat-tab-group>
-            <mat-tab label="English"></mat-tab>
+            <mat-tab [label]="toLang"></mat-tab>
           </mat-tab-group>
         </div>
       </div>
-      <div class="content-boxes" >
-        <div class="input-text" >
+      <div class="content-boxes">
+        <div class="input-text">
           <form [formGroup]="inputForm" [style.height.%]="100" [style.width.%]="100">
-          <div class="close-btn" [style.margin-bottom.px]="30">
-            <button mat-icon-button class="reset-btn" type="reset">
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
-          <div class="text-area">
-            <div class="text-inner">
-              <mat-form-field class="example-full-width" appearance="fill" [style.height.%]="100" [style.width.%]="100">
-                <input matInput placeholder="Enter Text"  formControlName="inputText">
-              </mat-form-field>
+            <div [style.margin-bottom.px]="30" class="close-btn">
+              <button (click)="resetForms()" class="reset-btn" mat-icon-button type="reset">
+                <mat-icon>close</mat-icon>
+              </button>
             </div>
-          </div>
+            <div class="text-area">
+              <div class="text-inner">
+                <mat-form-field [style.height.%]="100" [style.width.%]="100" appearance="fill"
+                                class="example-full-width">
+                  <input [value]="appService.inputText" formControlName="inputText" matInput placeholder="Enter Text">
+                </mat-form-field>
+              </div>
+            </div>
           </form>
           <div class="voice-input-button">
-            <button mat-icon-button class="mic-btn">
+            <button (click)="recordAudioAndSend()" id="mic-btn" class="mic-btn" mat-icon-button>
               <mat-icon>mic</mat-icon>
             </button>
           </div>
         </div>
         <div class="output-text">
           <form [formGroup]="outputForm" [style.height.%]="100" [style.width.%]="100">
-          <div class="close-btn" [style.margin-bottom.px]="30">
-            <button mat-icon-button class="reset-btn" type="reset" >
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
-          <div class="text-area" [style.margin-bottom.px]="30">
-            <div class="text-inner">
-              <mat-form-field class="example-full-width" appearance="fill" [style.height.%]="100" [style.width.%]="100">
-                <input matInput placeholder="Corresponding Word" formControlName="outputText" readonly>
-              </mat-form-field>
-          </div>
-      </div>
+            <div [style.margin-bottom.px]="30" class="close-btn">
+              <button (click)="resetForms()" class="reset-btn" mat-icon-button type="reset">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <div [style.margin-bottom.px]="30" class="text-area">
+              <div class="text-inner">
+                <mat-form-field [style.height.%]="100" [style.width.%]="100" appearance="fill"
+                                class="example-full-width">
+                  <input [value]="appService.translatedText" formControlName="outputText" matInput
+                         placeholder="Translation" readonly>
+                </mat-form-field>
+              </div>
+            </div>
           </form>
-    </div>
+        </div>
 
       </div>
+
+    <div class="other-contents-area">
+      <button (click)="createTinyUrlAndCopy()" class="share-btn" mat-icon-button>
+        <mat-icon class="share-btn-icon">share</mat-icon>
+        <span class="share-btn-text">&nbsp;Share Translation</span>
+      </button>
     </div>
-    <div class="other-contents-area"></div>
+  </div>
   </div>
 
 </div>
