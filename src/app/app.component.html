@@ -44,13 +44,13 @@
               <div class="text-inner">
                 <mat-form-field [style.height.%]="100" [style.width.%]="100" appearance="fill"
                                 class="example-full-width">
-                  <input formControlName="inputText" matInput placeholder="Enter Text">
+                  <input [value]="appService.inputText" formControlName="inputText" matInput placeholder="Enter Text">
                 </mat-form-field>
               </div>
             </div>
           </form>
           <div class="voice-input-button">
-            <button (click)="recordAudioAndSend()" class="mic-btn" mat-icon-button>
+            <button (click)="recordAudioAndSend()" id="mic-btn" class="mic-btn" mat-icon-button>
               <mat-icon>mic</mat-icon>
             </button>
           </div>
@@ -67,7 +67,7 @@
                 <mat-form-field [style.height.%]="100" [style.width.%]="100" appearance="fill"
                                 class="example-full-width">
                   <input [value]="appService.translatedText" formControlName="outputText" matInput
-                         placeholder="Corresponding Word" readonly>
+                         placeholder="Translation" readonly>
                 </mat-form-field>
               </div>
             </div>
@@ -75,13 +75,14 @@
         </div>
 
       </div>
-    </div>
+
     <div class="other-contents-area">
       <button (click)="createTinyUrlAndCopy()" class="share-btn" mat-icon-button>
         <mat-icon class="share-btn-icon">share</mat-icon>
         <span class="share-btn-text">&nbsp;Share Translation</span>
       </button>
     </div>
+  </div>
   </div>
 
 </div>

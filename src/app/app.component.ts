@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
           this.swapLanguages();
         }
         this.inputForm.get('inputText')?.patchValue(resp['word']);
-        this.appService.getTranslation(resp['word'], resp['fromLang'], resp['toLang']).subscribe(data => {
+        this.appService.getTranslation(resp['word'].trim(), resp['fromLang'], resp['toLang']).subscribe(data => {
           this.appService.translatedText = data?.data;
           console.log(this.appService.translatedText);
         })
@@ -64,29 +64,7 @@ export class AppComponent implements OnInit {
   }
 
   recordAudioAndSend() {
-    navigator.mediaDevices.getUserMedia({audio: true})
-      .then(stream => {
-        const mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.start();
-
-        // @ts-ignore
-        const audioChunks = [];
-        mediaRecorder.addEventListener("dataavailable", event => {
-          audioChunks.push(event.data);
-        });
-
-        mediaRecorder.addEventListener("stop", () => {
-          // @ts-ignore
-          const audioBlob = new Blob(audioChunks);
-          const audioUrl = URL.createObjectURL(audioBlob);
-          const audio = new Audio(audioUrl);
-          audio.play();
-        });
-
-        setTimeout(() => {
-          mediaRecorder.stop();
-        }, 3000);
-      });
+   this.appService.createVoiceProcRequest(document, this.inputForm);
   }
 
   createTinyUrlAndCopy() {

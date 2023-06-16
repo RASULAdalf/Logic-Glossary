@@ -13,6 +13,9 @@ export class AppInterceptor implements HttpInterceptor {
     if (request.url.toString().includes('word')) {
       this.appService.translatedText = 'Getting Translation...';
     }
+    if (request.url.toString().includes('voice')) {
+      this.appService.inputText = 'Transcribing Voice...';
+    }
     return next.handle(request).pipe(finalize(() => {
 
     }));

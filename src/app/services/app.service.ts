@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {HistoryModalComponent} from "../components/history-modal/history-modal.component";
+import {FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class AppService {
   baseURL = environment.baseURL;
   tinyURL = environment.tinyURL;
   public historydialogRef: MatDialogRef<HistoryModalComponent, any> | undefined;
-
+  inputText: any;
+  private mediaRecorder : any;
+  // @ts-ignore
+  private audioChunks:any[];
   constructor(private http: HttpClient, private modalService: MatDialog) {
   }
 
@@ -37,6 +41,50 @@ export class AppService {
         data: data
       }
     });
+  }
+
+  public createVoiceProcRequest(document: Document,inputForm:FormGroup) {
+    // @ts-ignore
+    navigator.mediaDevices.getUserMedia({audio: true})
+      .then(stream => {
+        if (this.mediaRecorder === undefined) {
+          this.mediaRecorder = new MediaRecorder(stream);
+        }
+        console.log(this.mediaRecorder.state)
+        if (this.mediaRecorder.state === 'paused' || this.mediaRecorder.state === 'inactive') {
+          this.audioChunks = [];
+          this.mediaRecorder.start();
+          // @ts-ignore
+          document.getElementById('mic-btn').className = 'colour-mic-btn';
+        } else {
+          this.mediaRecorder.stop();
+          // @ts-ignore
+          document.getElementById('mic-btn').className = 'mic-btn';
+        }
+
+        // @ts-ignore
+        this.mediaRecorder.addEventListener("dataavailable", event => {
+          this.audioChunks.push(event.data);
+        });
+
+        this.mediaRecorder.addEventListener("stop", async () => {
+          const audioBlob = new Blob(this.audioChunks);
+          const fileName = 'audioFile.mp3';
+
+          const file = await fetch(URL.createObjectURL(audioBlob)).then(r => r.blob()).then(blobFile => new File([blobFile], fileName, {type: 'audio/mp3'}));
+          const formData = new FormData();
+          formData.append("file", file);
+
+          this.http.post(this.baseURL+"voice/procVoice",formData).subscribe(data=>{
+            //@ts-ignore
+            inputForm.get('inputText')?.patchValue(data.data);
+          })
+
+        });
+
+      });
+
+
   }
 
 
