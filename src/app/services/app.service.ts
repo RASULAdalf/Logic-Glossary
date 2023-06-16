@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {HistoryModalComponent} from "../components/history-modal/history-modal.component";
 import {FormGroup} from "@angular/forms";
+import {AppInterceptor} from "../interceptors/app.interceptor";
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class AppService {
 
   public openHistoryModal(data: any[]) {
     this.historydialogRef = this.modalService.open(HistoryModalComponent, {
-      height: '580px',
+      height: '530px',
       width: '750px',
       data: {
         data: data
@@ -43,7 +44,7 @@ export class AppService {
     });
   }
 
-  public createVoiceProcRequest(document: Document,inputForm:FormGroup) {
+  public createVoiceProcRequest(document: Document,inputForm:FormGroup,fromLang:any) {
     // @ts-ignore
     navigator.mediaDevices.getUserMedia({audio: true})
       .then(stream => {
@@ -55,11 +56,11 @@ export class AppService {
           this.audioChunks = [];
           this.mediaRecorder.start();
           // @ts-ignore
-          document.getElementById('mic-btn').className = 'colour-mic-btn';
+          document.getElementById('mic-btn').style.color='blue'
         } else {
           this.mediaRecorder.stop();
           // @ts-ignore
-          document.getElementById('mic-btn').className = 'mic-btn';
+          document.getElementById('mic-btn').style.color='black'
         }
 
         // @ts-ignore
@@ -68,16 +69,20 @@ export class AppService {
         });
 
         this.mediaRecorder.addEventListener("stop", async () => {
+          this.mediaRecorder = new MediaRecorder(stream);
           const audioBlob = new Blob(this.audioChunks);
           const fileName = 'audioFile.mp3';
 
           const file = await fetch(URL.createObjectURL(audioBlob)).then(r => r.blob()).then(blobFile => new File([blobFile], fileName, {type: 'audio/mp3'}));
           const formData = new FormData();
           formData.append("file", file);
+          formData.append("inputLang",fromLang);
 
           this.http.post(this.baseURL+"voice/procVoice",formData).subscribe(data=>{
             //@ts-ignore
             inputForm.get('inputText')?.patchValue(data.data);
+            // @ts-ignore
+            this.inputText = data?.data;
           })
 
         });

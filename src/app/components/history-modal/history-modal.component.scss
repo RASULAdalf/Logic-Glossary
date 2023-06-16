@@ -97,8 +97,18 @@ h2 {
   margin-bottom: 10px;
 }
 
-@media screen and (min-width: 0) and (max-width: 750px) {
+@media screen and (min-width: 0) and (max-width: 768px) {
   .footer-area{
-    justify-content: flex-start!important;;
+    justify-content: flex-start!important;
+    align-items: flex-start!important;
+    margin-left: 0!important;
   }
+  .content-area{
+    height: 300px!important;
+  }
+  .title-area{
+    height: 100px!important;
+  }
+
+
 }

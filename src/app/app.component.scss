@@ -20,7 +20,7 @@
 
 .title-text-area {
   height: 100%;
-  width: 40%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -103,16 +103,17 @@ hr {
 
 }
 
-@media screen and (min-width: 0) and (max-width: 750px) {
+@media screen and (min-width: 0) and (max-width: 768px) {
+  .L,.O,.G,.I,.C,.Glossary{
+    font-size: 20px;
+  }
+  .title-area{
+    margin-left: 10px!important;
+  }
   .share-btn{
     width: 300px!important;
     font-size: large!important;
     padding-bottom: 50px!important;
-  }
-  .content-boxes{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
   }
   .mic-button{
     bottom: -8px!important;
@@ -121,7 +122,7 @@ hr {
     height: 80px !important;
   }
   .content-boxes {
-    flex: 1;
+    height: 340px!important;
     width: auto;
     display: flex;
     flex-direction: column;
@@ -144,10 +145,14 @@ hr {
     margin-bottom: 30px;
     margin-left: 20px;
   }
+  .other-contents-area{
+    height: 65px!important;
+    align-items: flex-start!important;
+  }
 }
 
 .content-boxes {
-  flex: 1;
+  height: 355px;
   width: auto;
   display: flex;
   justify-content: space-between;
@@ -198,18 +203,10 @@ hr {
 
 .mic-btn {
   position: absolute;
-  bottom: 4px;
+  bottom: -8px;
   left: 5px;
   border: none!important;
 }
-.colour-mic-btn{
-  position: absolute;
-  bottom: 4px;
-  left: 5px;
-  color: blue;
-  border: none!important;
-}
-
 .output-text {
   height: 300px;
   flex: 1;
@@ -221,9 +218,9 @@ hr {
 
 .other-contents-area {
   width: auto;
-  flex: 1;
+  height: 100px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
