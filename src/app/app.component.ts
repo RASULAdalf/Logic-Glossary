@@ -64,11 +64,11 @@ export class AppComponent implements OnInit {
   }
 
   recordAudioAndSend() {
-   this.appService.createVoiceProcRequest(document, this.inputForm);
+   this.appService.createVoiceProcRequest(document, this.inputForm,this.fromLang);
   }
 
   createTinyUrlAndCopy() {
-    this.appService.getTinyUrl("http://localhost:4200" + this.router.url).subscribe(data => {
+    this.appService.getTinyUrl("https://logic-glossary.web.app" + this.router.url).subscribe(data => {
       this.clipBoard.copy(data?.data?.tiny_url);
       this.snackBar.open("Link copied to clipboard!", "OK", {
         duration: 2000,
